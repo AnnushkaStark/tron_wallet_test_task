@@ -10,7 +10,7 @@ app = FastAPI(
 )
 
 
-app.include_router(wallet_router, prefix="/secret_service")
+app.include_router(wallet_router, prefix="/wallet")
 if __name__ == "__main__":
     uvicorn.run(
         "main:app",

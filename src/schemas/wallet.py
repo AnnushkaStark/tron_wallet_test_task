@@ -4,7 +4,7 @@ from pydantic import BaseModel
 
 
 class WalletRequestBase(BaseModel):
-    adress: str
+    address: str
     bandwith: float
     energy: float
     balance: float

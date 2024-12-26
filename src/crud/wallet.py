@@ -63,9 +63,11 @@ class WalletRequestCRUD:
         }
 
     async def get_by_adress(
-        self, db: AsyncSession, adress: str
+        self, db: AsyncSession, address: str
     ) -> Optional[WalletRequest]:
-        statement = select(WalletRequest).where(WalletRequest.adress == adress)
+        statement = select(WalletRequest).where(
+            WalletRequest.address == address
+        )
         result = await db.execute(statement)
         return result.scalars().first()
 

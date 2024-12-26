@@ -29,13 +29,13 @@ async def update(
     return wallet_info
 
 
-async def request(db: AsyncSession, adress: str) -> Optional[WalletRequest]:
+async def request(db: AsyncSession, address: str) -> Optional[WalletRequest]:
     try:
-        schema = await get_request(adress=adress)
+        schema = await get_request(address=address)
     except Exception as e:
         raise Exception(str(e))
     if exsisted_object := await wallet_request_crud.get_by_adress(
-        db=db, adress=adress
+        db=db, address=address
     ):
         return await update(db=db, db_obj=exsisted_object, schema=schema)
-    return await create(db=db, chema=schema)
+    return await create(db=db, schema=schema)

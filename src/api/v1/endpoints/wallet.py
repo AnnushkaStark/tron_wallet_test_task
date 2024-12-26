@@ -20,10 +20,10 @@ async def read_wallets(
 
 @router.post("/", status_code=status.HTTP_201_CREATED)
 async def get_wallet_request(
-    adress: str, db: AsyncSession = Depends(get_async_db)
+    address: str, db: AsyncSession = Depends(get_async_db)
 ):
     try:
-        await wallet_service.request(db=db, adress=adress)
+        return await wallet_service.request(db=db, address=address)
     except Exception as e:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST, detail=str(e)
