@@ -1,13 +1,12 @@
 import asyncio
 from logging.config import fileConfig
 
-from alembic import context
-from sqlalchemy import engine_from_config
-from sqlalchemy import pool
+from sqlalchemy import engine_from_config, pool
 from sqlalchemy.ext.asyncio import AsyncEngine
 
+from alembic import context
 from databases.database import Base
-
+from models import *  # noqa: F403 F401
 
 config = context.config
 
@@ -20,7 +19,7 @@ fileConfig(config.config_file_name)
 target_metadata = Base.metadata
 
 
-def run_migrations_offline():
+def run_migrations_offline() -> None:
     """Run migrations in 'offline' mode.
 
     This configures the context with just a URL
