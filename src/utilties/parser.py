@@ -8,6 +8,7 @@ async def get_request(adress: str) -> WalletRequestCreate:
     try:
         account_info = tron_client.get_account(addr=adress)
         account = WalletRequestCreate(
+            adress=adress,
             bandwith=account_info["bandwith"],
             balance=account_info["balance"] / 100000,
             energy=account_info["energy"],

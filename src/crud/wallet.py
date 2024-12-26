@@ -1,4 +1,4 @@
-from typing import Sequence
+from typing import Optional, Sequence
 
 from sqlalchemy import func, insert, select, update
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -61,6 +61,13 @@ class WalletRequestCRUD:
             "total": rows[0]["total"] if rows else 0,
             "objects": [r["WalletRequest"] for r in rows],
         }
+
+    async def get_by_adress(
+        self, db: AsyncSession, adress: str
+    ) -> Optional[WalletRequest]:
+        statement = select(WalletRequest).where(WalletRequest.adress == adress)
+        result = await db.execute(statement)
+        return result.scalars().first()
 
 
 wallet_request_crud = WalletRequestCRUD()
