@@ -22,34 +22,30 @@ Windows
 
 ```
 python -m venv venv
-
 ```
 Linux
 
 ```
 python3.11 -m venv venv
-
+```
 
 - Активировать окружение
 Windows
 
 ```
 venv/Scripts/activate.ps1
-
 ```
 
 Linux
 
 ```
 source/venv/bin/activate
-
 ```
 
 - Установить зависимости
 
 ```
 python -r requirements.txt
-
 ```
 
 - Запуск тестов (из директории src)
